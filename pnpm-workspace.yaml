@@ -1,0 +1,5 @@
+allowBuilds:
+  sharp: false
+  unrs-resolver: false
+  # vitest bundles test files with esbuild, which needs its install script
+  esbuild: true

@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+/* Colour tokens. Light by default, dark when the OS prefers it. */
+:root {
+  --background: #f6f5f2;
+  --surface: #ffffff;
+  --surface-muted: #f0eee9;
+  --border: #e4e1da;
+  --foreground: #1c1b19;
+  --muted: #6b675f;
+  --accent: #4f46e5;
+  --accent-foreground: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #101113;
+    --surface: #17181b;
+    --surface-muted: #1f2024;
+    --border: #2a2c31;
+    --foreground: #ececea;
+    --muted: #9a9890;
+    --accent: #8b85ff;
+    --accent-foreground: #101113;
+  }
+}
+
+/* Expose the tokens to Tailwind as bg-surface, text-muted, border-border, etc. */
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-border: var(--border);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* Shared form control look, used by every add-item form */
+@layer components {
+  .input {
+    @apply w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm text-foreground placeholder:text-muted outline-none focus:border-accent focus:ring-2 focus:ring-accent/25;
+  }
+  .label {
+    @apply mb-1 block text-xs font-medium text-muted;
+  }
+}
